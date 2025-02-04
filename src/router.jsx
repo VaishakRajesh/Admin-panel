@@ -19,6 +19,7 @@ import Select from "./Pages/Select/Select";
 import ViewUser from "./Pages/ViewUser/ViewUser";
 import ViewUserDetails from "./Pages/ViewUserDetails/ViewUserDetails";
 import ViewBulider from "./Pages/ViewBulider/ViewBulider";
+import District from "./Pages/District/District";
 
 export const router = createBrowserRouter([
     {
@@ -100,5 +101,9 @@ export const router = createBrowserRouter([
     {
         path: "/ViewBulider",
         element: <ViewBulider/>
+    },
+    {
+        path: "/District",
+        element: <District/>
     },
 ])

@@ -13,6 +13,9 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { Link } from 'react-router-dom';
+import BuildIcon from '@mui/icons-material/Build';
+import ComputerIcon from '@mui/icons-material/Computer';
+import PublicIcon from '@mui/icons-material/Public';
 const Sidebar = () => {
   return (
     <div className={Style.Sidebar}>
@@ -25,10 +28,12 @@ const Sidebar = () => {
         <div className={Style.Center}>
             <ul>
                 <p className={Style.Title}>MAIN</p>
+                <Link to="/">
                 <li>
                     <SpaceDashboardIcon className={Style.icons}/>
                     <span>Dashboard</span>
                 </li>
+                </Link>
                 <p className={Style.Title}>LISTS</p>
                 <Link to="/ViewUser" style={{textDecoration: "none"}}>
                 <li>
@@ -48,15 +53,21 @@ const Sidebar = () => {
                 </li> */}
                  <Link to="/ViewBulider" style={{textDecoration: "none"}}>
                 <li>
-                    <LocalShippingIcon className={Style.icons}/>
+                    <BuildIcon className={Style.icons}/>
                     <span>View Buliders</span>
                 </li>
                 </Link>
                 <p className={Style.Title}>USEFUL</p>
                 <Link to="/Select" style={{textDecoration: "none"}}>
                 <li>
-                    <AnalyticsIcon className={Style.icons}/>
+                    <ComputerIcon className={Style.icons}/>
                     <span>Insert Computer parts</span>
+                </li>
+                </Link>
+                <Link to="/District" style={{textDecoration: "none"}}>
+                <li>
+                    <PublicIcon className={Style.icons}/>
+                    <span>Insert District</span>
                 </li>
                 </Link>
                 <li>
