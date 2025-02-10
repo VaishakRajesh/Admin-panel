@@ -105,6 +105,7 @@ const District = () => {
             console.log(response)
             seterrors("Insert Successfully")
             setOpen(true);
+            fetchDistrict();
 
         }).catch((err) => {
             console.log(err);
