@@ -20,6 +20,8 @@ import ViewUser from "./Pages/ViewUser/ViewUser";
 import ViewUserDetails from "./Pages/ViewUserDetails/ViewUserDetails";
 import ViewBulider from "./Pages/ViewBulider/ViewBulider";
 import District from "./Pages/District/District";
+import Place from "./Pages/Place/Place";
+import TypesReport from "./Pages/Report/TypesReport/TypesReport";
 
 export const router = createBrowserRouter([
     {
@@ -105,5 +107,13 @@ export const router = createBrowserRouter([
     {
         path: "/District",
         element: <District/>
+    },
+    {
+        path: "/Place",
+        element: <Place/>
+    },
+    {
+        path: "/TypesReport",
+        element: <TypesReport/>
     },
 ])

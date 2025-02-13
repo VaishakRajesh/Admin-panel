@@ -16,6 +16,7 @@ import { Link } from 'react-router-dom';
 import BuildIcon from '@mui/icons-material/Build';
 import ComputerIcon from '@mui/icons-material/Computer';
 import PublicIcon from '@mui/icons-material/Public';
+import PlaceOutlinedIcon from '@mui/icons-material/PlaceOutlined';
 const Sidebar = () => {
   return (
     <div className={Style.Sidebar}>
@@ -68,6 +69,12 @@ const Sidebar = () => {
                 <li>
                     <PublicIcon className={Style.icons}/>
                     <span>Insert District</span>
+                </li>
+                </Link>
+                <Link to="/Place" style={{textDecoration: "none"}}>
+                <li>
+                    <PlaceOutlinedIcon className={Style.icons}/>
+                    <span>Insert Place</span>
                 </li>
                 </Link>
                 <li>
