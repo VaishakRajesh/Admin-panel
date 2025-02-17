@@ -7,15 +7,13 @@
     flex: 6;
 }
 
-.GraphicCard{
-    height: 400px;
-    width: 800px;
+.Types{
+    height: 600px;
+    width: 1300px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    margin-left: 400px;
-    margin-top: 50px;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    margin-left: 200px;
+    /* box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset; */
 }
 .Text{
     margin: 50px;

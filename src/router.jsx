@@ -22,6 +22,11 @@ import ViewBulider from "./Pages/ViewBulider/ViewBulider";
 import District from "./Pages/District/District";
 import Place from "./Pages/Place/Place";
 import TypesReport from "./Pages/Report/TypesReport/TypesReport";
+import StorageReport from "./Pages/Report/StorageReport/StorageReport";
+import CompanyReport from "./Pages/Report/CompanyReport/CompanyReport";
+import GraphicCardReport from "./Pages/Report/GraphicCardReport/GraphicCardReport";
+import CoolerReport from "./Pages/Report/CoolerReport/CoolerReport";
+import CaseReport from "./Pages/Report/CaseReport/CaseReport";
 
 export const router = createBrowserRouter([
     {
@@ -115,5 +120,25 @@ export const router = createBrowserRouter([
     {
         path: "/TypesReport",
         element: <TypesReport/>
+    },
+    {
+        path: "/StorageReport",
+        element: <StorageReport/>
+    },
+    {
+        path: "/CompanyReport",
+        element: <CompanyReport/>
+    },
+    {
+        path: "/GraphicCardReport",
+        element: <GraphicCardReport/>
+    },
+    {
+        path: "/CoolerReport",
+        element: <CoolerReport/>
+    },
+    {
+        path: "/CaseReport",
+        element: <CaseReport/>
     },
 ])
