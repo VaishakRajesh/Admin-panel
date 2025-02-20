@@ -27,6 +27,8 @@ import CompanyReport from "./Pages/Report/CompanyReport/CompanyReport";
 import GraphicCardReport from "./Pages/Report/GraphicCardReport/GraphicCardReport";
 import CoolerReport from "./Pages/Report/CoolerReport/CoolerReport";
 import CaseReport from "./Pages/Report/CaseReport/CaseReport";
+import MotherBoardReport from "./Pages/Report/MotherBoardReport/MotherBoardReport";
+import RamReport from "./Pages/Report/RamReport/RamReport";
 
 export const router = createBrowserRouter([
     {
@@ -140,5 +142,13 @@ export const router = createBrowserRouter([
     {
         path: "/CaseReport",
         element: <CaseReport/>
+    },
+    {
+        path: "/MotherBoardReport",
+        element: <MotherBoardReport/>
+    },
+    {
+        path: "/RamReport",
+        element: <RamReport/>
     },
 ])

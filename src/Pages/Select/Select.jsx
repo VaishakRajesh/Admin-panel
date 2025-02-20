@@ -18,6 +18,7 @@ import CompanyReport from '../Report/CompanyReport/CompanyReport'
 import GraphicCardReport from '../Report/GraphicCardReport/GraphicCardReport'
 import CoolerReport from '../Report/CoolerReport/CoolerReport'
 import CaseReport from '../Report/CaseReport/CaseReport'
+import MotherBoardReport from '../Report/MotherBoardReport/MotherBoardReport'
 const Select = () => {
     const [ActiveSection, setActiveSection] = useState('');
     const [Activebutton, setActivebutton] = useState('');
@@ -75,7 +76,7 @@ const Select = () => {
                             </div>
                         ) : (
                             <div className={Style.Dispaly}>
-                                
+                                <MotherBoardReport />
                             </div>
                         )
                     ) : null}

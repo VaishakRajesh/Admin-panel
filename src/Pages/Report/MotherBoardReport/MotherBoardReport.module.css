@@ -21,7 +21,6 @@
     margin: 50px;
     font-size: 50px;
     display: flex;
-    justify-content: center ;
 }
 .Button button {
     background-color: black; /* Black background */
@@ -44,6 +43,7 @@
   }
   .Types{
     margin-top: 50px;
+    margin-left: 100px;
   }
   .Company{
     margin-top: 50px;

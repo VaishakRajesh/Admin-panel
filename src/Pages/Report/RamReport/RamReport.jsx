@@ -1,22 +1,23 @@
 import React, { useEffect, useState } from 'react'
-import Style from './CompanyReport.module.css'
+import Style from './RamReport.module.css'
 import axios from 'axios'
 import { DataGrid } from '@mui/x-data-grid';
 import Paper from '@mui/material/Paper';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
-const CompanyReport = () => {
-    const [CompanyArray, setCompanyArray] = useState([])
-    const rowsWithId = CompanyArray.map((row, index) => ({ ...row, id: index + 1 }));
+const RamReport = () => {
+    const [RamArray, setRamArray] = useState([])
 
-    const fetchCompany = () => {
-        axios.get("http://localhost:5000/collectionCompany").then((response) => {
+    const rowsWithId = RamArray.map((row, index) => ({ ...row, motherboard: row.motherboardId.motherboardName, id: index + 1 }));
+    
+    const fetchram = () => {
+        axios.get("http://localhost:5000/collectionRam").then((response) => {
             console.log(response.data);
-            setCompanyArray(response.data.company);
+            setRamArray(response.data.ram);
         })
     }
     const deleteData = (id) => {
-        axios.delete(`http://localhost:5000/collectionCompany/${id}`).then((response) => {
-            fetchCompany();
+        axios.delete(`http://localhost:5000/collectionRam/${id}`).then((response) => {
+            fetchram();
             console.log(response)
         }).catch((err) => {
             console.log(err);
@@ -25,7 +26,8 @@ const CompanyReport = () => {
     }
     const columns = [
         { field: 'id', headerName: 'ID', flex: 1 },
-        { field: 'companyName', headerName: 'Company Name', flex: 3 },
+        { field: 'ramName', headerName: 'Ram name', flex: 2 },
+        { field: 'motherboard', headerName: 'MotherBoard Name', flex: 3 },
         {
             field: "action",
             headerName: "Action",
@@ -47,15 +49,15 @@ const CompanyReport = () => {
 
     ];
     useEffect(() => {
-        fetchCompany();
+        fetchram();
     }, [])
     const paginationModel = { page: 0, pageSize: 5 };
     return (
 
         <div className={Style.Types}>
-            <div className={Style.Text}>Types of Company</div>
+            <div className={Style.Text}>Types of Ram</div>
             <div className={Style.TextField}>
-                <Paper sx={{ height: 400, width: '100%' }}>
+                <Paper sx={{ height: 400, width: '90%' }}>
                     <DataGrid
                         rows={rowsWithId}
                         columns={columns}
@@ -70,4 +72,4 @@ const CompanyReport = () => {
     )
 }
 
-export default CompanyReport
+export default RamReport

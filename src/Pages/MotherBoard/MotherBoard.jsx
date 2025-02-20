@@ -14,7 +14,29 @@ import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
 import { DataGrid } from '@mui/x-data-grid';
 import Paper from '@mui/material/Paper';
-import Company from '../Company/Company';
+const Transition = React.forwardRef(function Transition(props, ref) {
+    return <Slide direction="up" ref={ref} {...props} />;
+});
+const StyledTableCell = styled(TableCell)(({ theme }) => ({
+    [`&.${tableCellClasses.head}`]: {
+        backgroundColor: theme.palette.common.black,
+        color: theme.palette.common.white,
+    },
+    [`&.${tableCellClasses.body}`]: {
+        fontSize: 14,
+    },
+}));
+const StyledTableRow = styled(TableRow)(({ theme }) => ({
+    '&:nth-of-type(odd)': {
+        backgroundColor: theme.palette.action.hover,
+    },
+    // hide last border
+    '&:last-child td, &:last-child th': {
+        border: 0,
+    },
+}));
+
+
 const MotherBoard = () => {
 
     const handleChange1 = (event) => {
@@ -38,7 +60,7 @@ const MotherBoard = () => {
         })
     }
     const fetchMotherboard = () => {
-        axios.get("http://localhost:5000/collectionCompany").then((response) => {
+        axios.get("http://localhost:5000/collectionMotherboard").then((response) => {
             console.log(response.data);
             setMotherboardArray(response.data)
         })
@@ -47,17 +69,20 @@ const MotherBoard = () => {
 
     const [CompanyArray, setCompanyArray] = React.useState([]);
     const [Company, setCompany] = useState("")
-    const [PlaceArray, setPlaceArray] = useState([])
+    const [Motherboard, setMotherboard] = useState("")
     const [TypeArray, setTypeArray] = useState([])
     const [Type, setType] = useState([])
+    const [open, setOpen] = React.useState(false);
+    const [errors, seterrors] = useState("")
     const [MotherboardArray, setMotherboardArray] = useState([])
 
     const HandleSubmit = () => {
         const data = {
-            districtId: District,
-            placeName: Place
+            motherboardName: Motherboard,
+            typeId: Type,
+            companyId: Company
         }
-        axios.post("http://localhost:5000/collectionPlace", data).then((response) => {
+        axios.post("http://localhost:5000/collectionMotherboard", data).then((response) => {
             console.log(response)
             seterrors("Insert Successfully")
             setOpen(true);
@@ -68,12 +93,15 @@ const MotherBoard = () => {
             setOpen(true);
         })
     }
+    const handleClose = () => {
+        setOpen(false);
+    };
 
     useEffect(() => {
 
         fetchCompany();
         fetchTypes();
-        }, [])
+    }, [])
 
     return (
         <div className={Style.MotherBoard}>
@@ -104,7 +132,7 @@ const MotherBoard = () => {
                         '& .MuiInput-underline:after': {
                             borderBottomColor: 'Black', // Focused underline color
                         },
-                    }} onChange={(e) => setPlace(e.target.value)}
+                    }} onChange={(e) => setMotherboard(e.target.value)}
                 />
             </div>
             <div className={Style.Types}>
@@ -127,7 +155,7 @@ const MotherBoard = () => {
                             color: 'black', // Ensures selected text remains black
                         }}
                     >
-                        
+
                         {TypeArray?.map((Type, index) => (
                             <MenuItem key={index} value={Type._id} sx={{ color: 'black' }}>
                                 {Type.typeName}
@@ -157,7 +185,7 @@ const MotherBoard = () => {
                         }}
                     >
                         {CompanyArray?.map((Company, index) => (
-                            <MenuItem key={index} value={Company._id} sx={{ color: 'black'}}>
+                            <MenuItem key={index} value={Company._id} sx={{ color: 'black' }}>
                                 {Company.companyName}
                             </MenuItem>
                         ))}
@@ -166,6 +194,24 @@ const MotherBoard = () => {
 
             </div>
             <div className={Style.Button}><Button onClick={HandleSubmit}>Submit</Button></div>
+            <React.Fragment>
+                <Dialog
+                    open={open}
+                    TransitionComponent={Transition}
+                    keepMounted
+                    onClose={handleClose}
+                    aria-describedby="alert-dialog-slide-description"
+                >
+                    <DialogContent>
+                        <DialogContentText id="alert-dialog-slide-description">
+                            {errors}
+                        </DialogContentText>
+                    </DialogContent>
+                    <DialogActions>
+                        <Button onClick={handleClose}>Ok</Button>
+                    </DialogActions>
+                </Dialog>
+            </React.Fragment>
         </div>
     )
 }
