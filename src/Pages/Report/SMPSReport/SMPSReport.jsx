@@ -1,23 +1,23 @@
 import React, { useEffect, useState } from 'react'
-import Style from './RamReport.module.css'
+import Style from './SMPSReport.module.css'
 import axios from 'axios'
 import { DataGrid } from '@mui/x-data-grid';
 import Paper from '@mui/material/Paper';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
-const RamReport = () => {
-    const [RamArray, setRamArray] = useState([])
+const SMPSReport = () => {
+    const [SMPSArray, setSMPSArray] = useState([])
 
-    const rowsWithId = RamArray.map((row, index) => ({ ...row, motherboard: row.motherboardId.motherboardName, id: index + 1 }));
+    const rowsWithId = SMPSArray.map((row, index) => ({ ...row, motherboard: row.motherboardId.motherboardName, id: index + 1 }));
     
-    const fetchram = () => {
-        axios.get("http://localhost:5000/collectionRam").then((response) => {
+    const fetchSMPS = () => {
+        axios.get("http://localhost:5000/collectionSMPS").then((response) => {
             console.log(response.data);
-            setRamArray(response.data.ram);
+            setSMPSArray(response.data.smps);
         })
     }
     const deleteData = (id) => {
-        axios.delete(`http://localhost:5000/collectionRam/${id}`).then((response) => {
-            fetchram();
+        axios.delete(`http://localhost:5000/collectionSMPS/${id}`).then((response) => {
+            fetchSMPS();
             console.log(response)
         }).catch((err) => {
             console.log(err);
@@ -26,7 +26,7 @@ const RamReport = () => {
     }
     const columns = [
         { field: 'id', headerName: 'ID', flex: 1 },
-        { field: 'ramName', headerName: 'Ram name', flex: 2 },
+        { field: 'smpsName', headerName: 'SMPS name', flex: 2 },
         { field: 'motherboard', headerName: 'MotherBoard Name', flex: 3 },
         {
             field: "action",
@@ -49,12 +49,12 @@ const RamReport = () => {
 
     ];
     useEffect(() => {
-        fetchram();
+        fetchSMPS();
     }, [])
     const paginationModel = { page: 0, pageSize: 5 };
     return (
 
-        <div className={Style.Ram}>
+        <div className={Style.SMPS}>
             <div className={Style.Text}>Types of Ram</div>
             <div className={Style.TextField}>
                 <Paper sx={{ height: 400, width: '90%' }}>
@@ -72,4 +72,4 @@ const RamReport = () => {
     )
 }
 
-export default RamReport
+export default SMPSReport

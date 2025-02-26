@@ -19,6 +19,8 @@ import GraphicCardReport from '../Report/GraphicCardReport/GraphicCardReport'
 import CoolerReport from '../Report/CoolerReport/CoolerReport'
 import CaseReport from '../Report/CaseReport/CaseReport'
 import MotherBoardReport from '../Report/MotherBoardReport/MotherBoardReport'
+import RamReport from '../Report/RamReport/RamReport'
+import SMPSReport from '../Report/SMPSReport/SMPSReport'
 const Select = () => {
     const [ActiveSection, setActiveSection] = useState('');
     const [Activebutton, setActivebutton] = useState('');
@@ -91,11 +93,17 @@ const Select = () => {
                             </div>
                         )
                     ) : null}
-                    {ActiveSection === 'Ram' && (
-                        <div className={Style.Dispaly}>
-                            <Ram />
-                        </div>
-                    )}
+                     {ActiveSection === 'Ram' ? (
+                        Activebutton === 'insert' ? (
+                            <div className={Style.Dispaly}>
+                                <Ram />
+                            </div>
+                        ) : (
+                            <div className={Style.Dispaly}>
+                                <RamReport/>
+                            </div>
+                        )
+                    ) : null}
                     {ActiveSection === 'Storage' ? (
                         Activebutton === 'insert' ? (
                             <div className={Style.Dispaly}>
@@ -129,11 +137,17 @@ const Select = () => {
                             </div>
                         )
                     ) : null}
-                    {ActiveSection === 'SMPS' && (
-                        <div className={Style.Dispaly}>
-                            <SMPS />
-                        </div>
-                    )}
+                     {ActiveSection === 'SMPS' ? (
+                        Activebutton === 'insert' ? (
+                            <div className={Style.Dispaly}>
+                                <SMPS />
+                            </div>
+                        ) : (
+                            <div className={Style.Dispaly}>
+                                <SMPSReport/>
+                            </div>
+                        )
+                    ) : null}
                     {ActiveSection === 'Cooler' ? (
                         Activebutton === 'insert' ? (
                             <div className={Style.Dispaly}>

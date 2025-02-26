@@ -29,6 +29,7 @@ import CoolerReport from "./Pages/Report/CoolerReport/CoolerReport";
 import CaseReport from "./Pages/Report/CaseReport/CaseReport";
 import MotherBoardReport from "./Pages/Report/MotherBoardReport/MotherBoardReport";
 import RamReport from "./Pages/Report/RamReport/RamReport";
+import SMPSReport from "./Pages/Report/SMPSReport/SMPSReport";
 
 export const router = createBrowserRouter([
     {
@@ -150,5 +151,9 @@ export const router = createBrowserRouter([
     {
         path: "/RamReport",
         element: <RamReport/>
+    },
+    {
+        path: "/SMPSReport",
+        element: <SMPSReport/>
     },
 ])
