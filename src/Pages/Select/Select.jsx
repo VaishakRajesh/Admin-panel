@@ -21,6 +21,8 @@ import CaseReport from '../Report/CaseReport/CaseReport'
 import MotherBoardReport from '../Report/MotherBoardReport/MotherBoardReport'
 import RamReport from '../Report/RamReport/RamReport'
 import SMPSReport from '../Report/SMPSReport/SMPSReport'
+import CPU from '../CPU/CPU'
+import CPUReport from '../Report/CPUReport/CPUReport'
 const Select = () => {
     const [ActiveSection, setActiveSection] = useState('');
     const [Activebutton, setActivebutton] = useState('');
@@ -36,6 +38,10 @@ const Select = () => {
                         <div className={Style.Button}>
                             <button onClick={() => setActiveSection('Types')}
                             >Types</button>
+                        </div>
+                        <div className={Style.Button}>
+                            <button onClick={() => setActiveSection('CPU')}
+                            >CPU</button>
                         </div>
                         <div className={Style.Button}>
                             <button onClick={() => setActiveSection('Ram')}
@@ -90,6 +96,17 @@ const Select = () => {
                         ) : (
                             <div className={Style.Dispaly}>
                                 <TypesReport/>
+                            </div>
+                        )
+                    ) : null}
+                    {ActiveSection === 'CPU' ? (
+                        Activebutton === 'insert' ? (
+                            <div className={Style.Dispaly}>
+                                <CPU />
+                            </div>
+                        ) : (
+                            <div className={Style.Dispaly}>
+                                <CPUReport/>
                             </div>
                         )
                     ) : null}
